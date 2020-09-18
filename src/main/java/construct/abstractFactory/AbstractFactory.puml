@@ -1,0 +1,57 @@
+@startuml
+
+abstract class AbstractProductA {
+    {method} +use() : void
+}
+
+abstract class AbstractProductB {
+    {method} +eat() : void
+}
+
+abstract class AbstractFactory {
+    {method} +createProductA() : AbstractProductA
+    {method} +createProductB() : AbstractProductB
+}
+
+class ConcreteFactory1 {
+    {method} +createProductA() : AbstractProductA
+    {method} +createProductB() : AbstractProductB
+}
+
+class ConcreteFactory2 {
+    {method} +createProductA() : AbstractProductA
+    {method} +createProductB() : AbstractProductB
+}
+
+class ConcreteProductA1 {
+    {method} +use() : void
+}
+
+class ConcreteProductA2 {
+    {method} +use() : void
+}
+
+class ConcreteProductB1 {
+    {method} +eat() : void
+}
+
+class ConcreteProductB2 {
+    {method} +eat() : void
+}
+
+AbstractProductA <|.. ConcreteProductA1
+AbstractProductA <|.. ConcreteProductA2
+
+AbstractProductB <|.. ConcreteProductB1
+AbstractProductB <|.. ConcreteProductB2
+
+AbstractFactory <|.. ConcreteFactory1
+AbstractFactory <|.. ConcreteFactory2
+
+ConcreteFactory1 ..> ConcreteProductA1
+ConcreteFactory1 ..> ConcreteProductB1
+
+ConcreteFactory2 ..> ConcreteProductA2
+ConcreteFactory2 ..> ConcreteProductB2
+
+@enduml

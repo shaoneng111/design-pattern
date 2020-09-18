@@ -1,0 +1,31 @@
+@startuml
+
+abstract class Product {
+    {method} +use() : void
+}
+
+class ConcreteProduct {
+    {method} +use() : void
+}
+
+abstract class Factory {
+    {method} +factoryMethod : Product
+}
+
+class ConcreteFactory {
+    {method} +factoryMethod : Product
+}
+
+Product <|.. ConcreteProduct
+Factory <|.. ConcreteFactory
+
+ConcreteFactory .left.> ConcreteProduct
+
+note as n1
+    return new ConcreteProduct();
+end note
+
+ConcreteFactory .. n1
+
+
+@enduml
