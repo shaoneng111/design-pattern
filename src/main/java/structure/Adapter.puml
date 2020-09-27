@@ -1,0 +1,29 @@
+@startuml
+
+class Adaptee {
+    {method} +specificRequest() : void
+}
+
+class Target {
+    {method} +request() : void
+}
+
+class Adapter {
+    {field} -Adaptee : Adaptee*
+    {method} +request(): void
+}
+
+class Client {
+}
+
+Adapter -up-|> Target
+Adapter -right-> Adaptee
+Client .right.> Target
+
+note as n1
+    Adaptee -> specificRequest();
+end note
+
+Adaptee ..n1
+
+@enduml
