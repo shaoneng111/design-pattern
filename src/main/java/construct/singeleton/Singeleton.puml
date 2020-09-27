@@ -1,0 +1,13 @@
+@startuml
+
+class Singleton {
+    {field} -instance : Singleton
+    {method} +getInstance() : Singleton
+    {method} +SingletonOperation() : void
+    {method} -Singleton : void
+}
+
+Singleton o-- Singleton : instance
+
+
+@enduml

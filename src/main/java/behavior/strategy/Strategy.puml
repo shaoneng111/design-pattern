@@ -1,0 +1,30 @@
+@startuml
+
+class Context {
+    {method} +algorithm() : void
+    {method} +setStrategy(Strategy*) : void
+}
+
+abstract class Strategy {
+    {method} +algorithm() : void
+}
+
+class ConcreteStrategyA {
+    {method} +algorithm() : void
+}
+
+class ConcreteStrategyB {
+    {method} +algorithm() : void
+}
+
+Context o-- Strategy
+ConcreteStrategyA -up-|> Strategy
+ConcreteStrategyB -up-|> Strategy
+
+note as n1
+    strategy -> algorithm();
+end note
+
+Context .left. n1
+
+@enduml

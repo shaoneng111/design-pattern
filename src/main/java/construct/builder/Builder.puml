@@ -1,0 +1,42 @@
+@startuml
+
+class Product {
+
+}
+
+class Builder {
+    {field} +product : Product;
+    {method} +buildA() : void;
+    {method} +buildB() : void;
+    {method} +getResult() : Product;
+}
+
+class ConcreteBuilderA {
+    {field} +product : Product;
+    {method} +buildA() : void;
+    {method} +buildB() : void;
+    {method} +getResult() : Product;
+}
+
+class ConcreteBuilderB {
+    {field} +Product product;
+    {method} +buildA() : void;
+    {method} +buildB() : void ;
+    {method} +getResult() : Product;
+}
+
+class Director {
+    {field} -Builder builder;
+    {method} +construct(Builder builder) : Product;
+    {method} +setBuilder(Builder *) : void
+}
+
+Builder <|.. ConcreteBuilderA
+Builder <|.. ConcreteBuilderB
+
+Builder o.left. Director
+
+ConcreteBuilderA ..> Product
+ConcreteBuilderB ..> Product
+
+@enduml
