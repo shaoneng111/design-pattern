@@ -1,0 +1,40 @@
+@startuml
+
+class FlyweightFactory {
+    {field} -mpFlyweight : map<String, Flyweight*>
+    {method} +getFlyweight(string) : void
+}
+
+class Flyweight {
+    {method} +operation() : void
+}
+
+class ConcreteFlyweight {
+    {field} -intrinsicState : int
+    {method} +operation() : void
+}
+
+class UnSharedConcreteFlyweight {
+    {field} -allState : int
+    {method} +operation() : void
+}
+
+ConcreteFlyweight -up-|> Flyweight
+UnSharedConcreteFlyweight -up-|> Flyweight
+
+FlyweightFactory o-right-> Flyweight : -flyweights
+
+note as n1
+if (mpFlyweight.find(key) != EOF()) {
+    return exist one;
+} else {
+    p = new Flyweight();
+    mpFlyweight.insert(p);
+    return p;
+}
+end note
+
+FlyweightFactory .. n1
+
+
+@enduml
