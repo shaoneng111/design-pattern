@@ -1,0 +1,46 @@
+@startuml
+
+class Component {
+    {method} +Operation() : void
+}
+
+class ConcreteComponent {
+    {method} +Operation() : void
+}
+
+class Decorator {
+    {method} +Operation() : void
+}
+
+class ConcreteDecoratorA {
+    {field} -addedState : string
+    {method} +Operation() : void
+}
+
+class ConcreteDecoratorB {
+    {method} +Operation() : void
+    {method} -AddedBehavior() : void
+}
+
+ConcreteComponent -up-|> Component
+Decorator -up-|> Component
+ConcreteDecoratorA -up-|> Decorator
+ConcreteDecoratorB -up-|> Decorator
+
+Component --o Decorator
+
+note as n1
+    component.operation();
+end note
+
+note as n2
+    Decorator:operation();
+    AddedBehavior();
+end note
+
+ConcreteDecoratorB .. n2
+
+
+Decorator .left. n1
+
+@enduml

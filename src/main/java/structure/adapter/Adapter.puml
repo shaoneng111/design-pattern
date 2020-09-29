@@ -24,6 +24,6 @@ note as n1
     Adaptee -> specificRequest();
 end note
 
-Adaptee ..n1
+Adapter ..n1
 
 @enduml
