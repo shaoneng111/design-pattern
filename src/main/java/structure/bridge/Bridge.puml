@@ -1,0 +1,44 @@
+@startuml
+
+class Abstraction {
+    {field} -plmp : Implementor*
+    {method} operation() : void
+    {method} <<construct>> Abstraction(Implementor*) : void
+}
+
+class RefinedAbstraction {
+    {method} operation() : void
+    {method} <<construct>> Abstraction(Implementor*) : void
+}
+
+class Implementor {
+    {method} +OperationImpl() : void
+}
+
+class ImplementorA {
+    {method} +OperationImpl() : void
+}
+
+class ImplementorB {
+    {method} +OperationImpl() : void
+}
+
+class Client {
+
+}
+
+RefinedAbstraction -up-|> Abstraction
+
+ImplementorA -up-|> Implementor
+ImplementorB -up-|> Implementor
+
+Abstraction .left.o Implementor
+Client .right.> Abstraction
+
+note as n1
+    pImp -> OperationImpl()
+end note
+
+Abstraction .up. n1
+
+@enduml
